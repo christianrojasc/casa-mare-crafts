@@ -1,33 +1,35 @@
 <section class="section{% if section.settings.dark %} section--dark{% elsif section.settings.sand %} section--sand{% endif %}">
   <div class="page-width">
-    <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(24px, 5vw, 80px);">
-      <div style="{% if section.settings.image_first %}order: 0{% else %}order: 1{% endif %}">
+    <div class="grid image-text{% unless section.settings.image_first %} image-text--text-first{% endunless %}">
+      <div class="image-text__media">
         {%- if section.settings.image != blank -%}
           <img src="{{ section.settings.image | image_url: width: 1400 }}"
                alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
                loading="lazy"
                width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}"
-               style="width: 100%; height: auto; border-radius: 2px; box-shadow: var(--shadow-soft);">
+               class="image-text__image">
         {%- else -%}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </div>
 
-      <div>
-        {%- if section.settings.eyebrow != blank -%}
-          <div class="t-eyebrow" style="margin-bottom: 14px;">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.story.eyebrow', default: 'Our story' %}</div>
-        {%- endif -%}
-        {%- if section.settings.script_line != blank -%}
-          <div class="t-script" style="font-size: 1.6rem; margin-bottom: 14px;">{% render 'i18n-default', value: section.settings.script_line, key: 'homepage.story.script', default: 'Slow living, by the sea' %}</div>
-        {%- endif -%}
-        {%- if section.settings.heading != blank -%}
-          <h2 class="t-h2">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.story.heading', default: 'Made for homes that feel lived-in' %}</h2>
-        {%- endif -%}
-        <div class="stack" style="margin-top: 22px; max-width: 54ch;">
+      <div class="image-text__content">
+        <header class="section-header section-header--left">
+          {%- if section.settings.eyebrow != blank -%}
+            <div class="t-eyebrow section-header__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.story.eyebrow', default: 'Our story' %}</div>
+          {%- endif -%}
+          {%- if section.settings.script_line != blank -%}
+            <div class="t-script section-header__script">{% render 'i18n-default', value: section.settings.script_line, key: 'homepage.story.script', default: 'Slow living, by the sea' %}</div>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="t-h2">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.story.heading', default: 'Made for homes that feel lived-in' %}</h2>
+          {%- endif -%}
+        </header>
+        <div class="stack image-text__body">
           {% render 'i18n-default', value: section.settings.body, key: 'homepage.story.body', default: '<p>Casa Mare Crafts was created for homes that feel relaxed, warm, and personal. Each piece is inspired by coastal living, natural materials, and the quiet beauty of handmade details.</p><p>Our pieces are designed to make your home feel collected, sun-warmed, and lived-in — never overly polished, never mass-produced.</p>' %}
         </div>
         {%- if section.settings.cta_label != blank -%}
-          <div style="margin-top: 32px;">
+          <div class="image-text__actions">
             <a href="{{ section.settings.cta_link }}" class="btn {% if section.settings.dark %}btn--outline-light{% else %}btn--navy{% endif %}">{% render 'i18n-default', value: section.settings.cta_label, key: 'homepage.story.cta', default: 'Read our story' %}</a>
           </div>
         {%- endif -%}

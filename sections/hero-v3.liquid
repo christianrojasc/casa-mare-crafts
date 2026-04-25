@@ -1,0 +1,74 @@
+<section class="hero-alt hero-v3">
+  <div class="hero-alt__inner hero-v3__inner">
+    <div class="hero-alt__content hero-v3__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="t-eyebrow hero-alt__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.hero_v3.eyebrow', default: 'Casa Mare studio' %}</div>
+      {%- endif -%}
+      {%- if section.settings.script_line != blank -%}
+        <div class="hero-alt__script">{% render 'i18n-default', value: section.settings.script_line, key: 'homepage.hero_v3.script', default: 'Made slowly, by hand' %}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero-alt__title">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.hero_v3.heading', default: 'Natural pieces with the warmth of a home by the sea.' %}</h1>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-alt__text">{% render 'i18n-default', value: section.settings.subheading, key: 'homepage.hero_v3.subheading', default: 'A quieter take on coastal decor, shaped with soft neutrals, organic texture, and thoughtful handmade detail.' %}</p>
+      {%- endif -%}
+
+      <div class="hero-alt__actions">
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--light">{% render 'i18n-default', value: section.settings.cta_label, key: 'homepage.hero_v3.cta_primary', default: 'Shop new arrivals' %}</a>
+        {%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}
+          <a href="{{ section.settings.cta2_link | default: routes.all_products_collection_url }}" class="btn btn--outline-light">{% render 'i18n-default', value: section.settings.cta2_label, key: 'homepage.hero_v3.cta_secondary', default: 'Our story' %}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="hero-v3__media">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1800 }}"
+             srcset="{{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1400 }} 1400w, {{ section.settings.image | image_url: width: 2000 }} 2000w"
+             sizes="(min-width: 900px) 48vw, 100vw"
+             alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+             loading="eager"
+             width="{{ section.settings.image.width }}"
+             height="{{ section.settings.image.height }}"
+             class="media-cover">
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+      {%- if section.settings.caption_left != blank or section.settings.caption_right != blank -%}
+        <div class="hero-v3__caption">
+          {%- if section.settings.caption_left != blank -%}
+            <span>{% render 'i18n-default', value: section.settings.caption_left, key: 'homepage.hero_v3.caption_left', default: 'Handmade decor' %}</span>
+          {%- endif -%}
+          {%- if section.settings.caption_right != blank -%}
+            <span>{% render 'i18n-default', value: section.settings.caption_right, key: 'homepage.hero_v3.caption_right', default: 'Warm coastal rooms' %}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero v3 - navy atelier",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Casa Mare studio" },
+    { "type": "text", "id": "script_line", "label": "Italic accent line", "default": "Made slowly, by hand" },
+    { "type": "text", "id": "heading", "label": "Main heading", "default": "Natural pieces with the warmth of a home by the sea." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading",
+      "default": "A quieter take on coastal decor, shaped with soft neutrals, organic texture, and thoughtful handmade detail." },
+    { "type": "text", "id": "cta_label", "label": "Primary button label", "default": "Shop new arrivals" },
+    { "type": "url",  "id": "cta_link",  "label": "Primary button link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Our story" },
+    { "type": "url",  "id": "cta2_link",  "label": "Secondary button link" },
+    { "type": "text", "id": "caption_left", "label": "Image caption left", "default": "Handmade decor" },
+    { "type": "text", "id": "caption_right", "label": "Image caption right", "default": "Warm coastal rooms" }
+  ],
+  "presets": [{ "name": "Hero v3 - navy atelier" }]
+}
+{% endschema %}

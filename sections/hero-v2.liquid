@@ -1,0 +1,91 @@
+<section class="hero-alt hero-v2">
+  <div class="hero-alt__inner hero-v2__inner">
+    <div class="hero-alt__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="t-eyebrow hero-alt__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.hero_v2.eyebrow', default: 'The coastal home edit' %}</div>
+      {%- endif -%}
+      {%- if section.settings.script_line != blank -%}
+        <div class="hero-alt__script">{% render 'i18n-default', value: section.settings.script_line, key: 'homepage.hero_v2.script', default: 'Sun-washed textures' %}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero-alt__title">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.hero_v2.heading', default: 'Handmade coastal pieces for warm, lived-in beach homes.' %}</h1>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-alt__text t-muted">{% render 'i18n-default', value: section.settings.subheading, key: 'homepage.hero_v2.subheading', default: 'Bring texture, warmth, and natural beauty into your space with artisan coastal decor inspired by life by the sea.' %}</p>
+      {%- endif -%}
+
+      <div class="hero-alt__actions">
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--navy">{% render 'i18n-default', value: section.settings.cta_label, key: 'homepage.hero_v2.cta_primary', default: 'Shop the collection' %}</a>
+        {%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}
+          <a href="{{ section.settings.cta2_link | default: routes.all_products_collection_url }}" class="btn btn--outline">{% render 'i18n-default', value: section.settings.cta2_label, key: 'homepage.hero_v2.cta_secondary', default: 'Explore handmade pieces' %}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.note_heading != blank or section.settings.note_text != blank -%}
+        <div class="hero-v2__note">
+          {%- if section.settings.note_heading != blank -%}
+            <div class="hero-v2__note-title">{% render 'i18n-default', value: section.settings.note_heading, key: 'homepage.hero_v2.note_heading', default: 'Collected, not crowded' %}</div>
+          {%- endif -%}
+          {%- if section.settings.note_text != blank -%}
+            <p>{% render 'i18n-default', value: section.settings.note_text, key: 'homepage.hero_v2.note_text', default: 'Soft neutrals, natural materials, and a little sea-glass color for rooms that feel gathered over time.' %}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="hero-v2__gallery">
+      <div class="hero-v2__image">
+        {%- if section.settings.image_primary != blank -%}
+          <img src="{{ section.settings.image_primary | image_url: width: 1500 }}"
+               srcset="{{ section.settings.image_primary | image_url: width: 800 }} 800w, {{ section.settings.image_primary | image_url: width: 1200 }} 1200w, {{ section.settings.image_primary | image_url: width: 1600 }} 1600w"
+               sizes="(min-width: 900px) 42vw, 100vw"
+               alt="{{ section.settings.image_primary.alt | default: section.settings.heading | escape }}"
+               loading="eager"
+               width="{{ section.settings.image_primary.width }}"
+               height="{{ section.settings.image_primary.height }}"
+               class="media-cover">
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="hero-v2__image hero-v2__image--secondary">
+        {%- if section.settings.image_secondary != blank -%}
+          <img src="{{ section.settings.image_secondary | image_url: width: 900 }}"
+               alt="{{ section.settings.image_secondary.alt | default: section.settings.script_line | escape }}"
+               loading="lazy"
+               width="{{ section.settings.image_secondary.width }}"
+               height="{{ section.settings.image_secondary.height }}"
+               class="media-cover">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero v2 - editorial split",
+  "settings": [
+    { "type": "image_picker", "id": "image_primary", "label": "Primary image" },
+    { "type": "image_picker", "id": "image_secondary", "label": "Secondary image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The coastal home edit" },
+    { "type": "text", "id": "script_line", "label": "Italic accent line", "default": "Sun-washed textures" },
+    { "type": "text", "id": "heading", "label": "Main heading", "default": "Handmade coastal pieces for warm, lived-in beach homes." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading",
+      "default": "Bring texture, warmth, and natural beauty into your space with artisan coastal decor inspired by life by the sea." },
+    { "type": "text", "id": "cta_label", "label": "Primary button label", "default": "Shop the collection" },
+    { "type": "url",  "id": "cta_link",  "label": "Primary button link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Explore handmade pieces" },
+    { "type": "url",  "id": "cta2_link",  "label": "Secondary button link" },
+    { "type": "text", "id": "note_heading", "label": "Editorial note heading", "default": "Collected, not crowded" },
+    { "type": "textarea", "id": "note_text", "label": "Editorial note",
+      "default": "Soft neutrals, natural materials, and a little sea-glass color for rooms that feel gathered over time." }
+  ],
+  "presets": [{ "name": "Hero v2 - editorial split" }]
+}
+{% endschema %}

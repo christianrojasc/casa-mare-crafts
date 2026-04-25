@@ -1,21 +1,24 @@
 <section class="section{% if section.settings.dark %} section--dark{% elsif section.settings.sand %} section--sand{% endif %}">
   <div class="page-width">
-    {%- if section.settings.eyebrow != blank -%}
-      <div class="t-eyebrow text-center" style="margin-bottom: 14px;">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.testimonials.eyebrow', default: 'From our customers' %}</div>
-    {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h2 class="t-h2 text-center">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.testimonials.heading', default: 'Homes that feel like Casa Mare' %}</h2>
-    {%- endif -%}
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
-    </div>
-    <div class="grid grid--3" style="margin-top: 40px;">
+    <header class="section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="t-eyebrow section-header__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.testimonials.eyebrow', default: 'From our customers' %}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="t-h2">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.testimonials.heading', default: 'Homes that feel like Casa Mare' %}</h2>
+      {%- endif -%}
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+    </header>
+
+    <div class="grid grid--3 section-grid testimonial-grid">
       {%- for block in section.blocks -%}
-        <figure {{ block.shopify_attributes }} style="text-align: center; padding: 28px;">
-          <blockquote style="font-family: var(--font-heading); font-style: italic; font-weight: 400; font-size: 1.25rem; line-height: 1.55; color: inherit;">
+        <figure class="testimonial-card" {{ block.shopify_attributes }}>
+          <blockquote class="testimonial-card__quote">
             &ldquo;{{ block.settings.quote }}&rdquo;
           </blockquote>
-          <figcaption class="t-muted" style="margin-top: 22px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.24em;">
+          <figcaption class="t-muted testimonial-card__attribution">
             — {{ block.settings.attribution }}
           </figcaption>
         </figure>
