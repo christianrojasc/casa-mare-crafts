@@ -1,4 +1,13 @@
 <section class="hero-alt hero-v4">
+  {%- if section.settings.stamp_heading != blank -%}
+    <div class="hero-v4__stamp" aria-hidden="true">
+      <span>
+        <strong>{% render 'i18n-default', value: section.settings.stamp_heading, key: 'homepage.hero_v4.stamp_heading', default: 'Casa Mare' %}</strong>
+        {% render 'i18n-default', value: section.settings.stamp_text, key: 'homepage.hero_v4.stamp_text', default: 'Handmade coastal goods' %}
+      </span>
+    </div>
+  {%- endif -%}
+
   <div class="hero-alt__inner hero-v4__inner">
     <div class="hero-v4__header">
       {%- if section.settings.eyebrow != blank -%}
@@ -21,6 +30,12 @@
         {%- if section.settings.cta2_label != blank -%}
           <a href="{{ section.settings.cta2_link | default: routes.all_products_collection_url }}" class="btn btn--outline">{% render 'i18n-default', value: section.settings.cta2_label, key: 'homepage.hero_v4.cta_secondary', default: 'Explore the casa edit' %}</a>
         {%- endif -%}
+      </div>
+
+      <div class="hero-alt__deck" aria-label="Brand details">
+        <span>{% render 'i18n-default', value: section.settings.detail_one, key: 'homepage.hero_v4.detail_one', default: 'Linen-soft palette' %}</span>
+        <span>{% render 'i18n-default', value: section.settings.detail_two, key: 'homepage.hero_v4.detail_two', default: 'Collected corners' %}</span>
+        <span>{% render 'i18n-default', value: section.settings.detail_three, key: 'homepage.hero_v4.detail_three', default: 'By-the-sea calm' %}</span>
       </div>
     </div>
 
@@ -98,6 +113,11 @@
     { "type": "url",  "id": "cta_link",  "label": "Primary button link" },
     { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Explore the casa edit" },
     { "type": "url",  "id": "cta2_link",  "label": "Secondary button link" },
+    { "type": "text", "id": "detail_one", "label": "Detail label 1", "default": "Linen-soft palette" },
+    { "type": "text", "id": "detail_two", "label": "Detail label 2", "default": "Collected corners" },
+    { "type": "text", "id": "detail_three", "label": "Detail label 3", "default": "By-the-sea calm" },
+    { "type": "text", "id": "stamp_heading", "label": "Stamp heading", "default": "Casa Mare" },
+    { "type": "text", "id": "stamp_text", "label": "Stamp text", "default": "Handmade coastal goods" },
     { "type": "text", "id": "footer_left_title", "label": "Footer left title", "default": "Natural textures" },
     { "type": "textarea", "id": "footer_left_text", "label": "Footer left text", "default": "Woven, ceramic, linen, and driftwood-inspired details for layered beach-house rooms." },
     { "type": "text", "id": "footer_right_title", "label": "Footer right title", "default": "Quiet coastal color" },

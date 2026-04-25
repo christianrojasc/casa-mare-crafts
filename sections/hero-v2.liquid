@@ -23,6 +23,12 @@
         {%- endif -%}
       </div>
 
+      <div class="hero-alt__deck" aria-label="Brand details">
+        <span>{% render 'i18n-default', value: section.settings.detail_one, key: 'homepage.hero_v2.detail_one', default: 'Small-batch decor' %}</span>
+        <span>{% render 'i18n-default', value: section.settings.detail_two, key: 'homepage.hero_v2.detail_two', default: 'Sun-washed neutrals' %}</span>
+        <span>{% render 'i18n-default', value: section.settings.detail_three, key: 'homepage.hero_v2.detail_three', default: 'Made for slow rooms' %}</span>
+      </div>
+
       {%- if section.settings.note_heading != blank or section.settings.note_text != blank -%}
         <div class="hero-v2__note">
           {%- if section.settings.note_heading != blank -%}
@@ -82,6 +88,9 @@
     { "type": "url",  "id": "cta_link",  "label": "Primary button link" },
     { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Explore handmade pieces" },
     { "type": "url",  "id": "cta2_link",  "label": "Secondary button link" },
+    { "type": "text", "id": "detail_one", "label": "Detail label 1", "default": "Small-batch decor" },
+    { "type": "text", "id": "detail_two", "label": "Detail label 2", "default": "Sun-washed neutrals" },
+    { "type": "text", "id": "detail_three", "label": "Detail label 3", "default": "Made for slow rooms" },
     { "type": "text", "id": "note_heading", "label": "Editorial note heading", "default": "Collected, not crowded" },
     { "type": "textarea", "id": "note_text", "label": "Editorial note",
       "default": "Soft neutrals, natural materials, and a little sea-glass color for rooms that feel gathered over time." }

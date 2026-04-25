@@ -14,6 +14,7 @@
 - Added subtle section transition treatment through sand gradients, dark-section inset dividers, and light-section separators.
 - Moved homepage inline styles into dedicated component classes for collection cards, featured grids, image-with-text layouts, testimonials, and newsletter content.
 - Added shared alternative hero primitives under `.hero-alt` so the three new hero sections can share the same spacing, typography, and button rhythm.
+- Added a more expressive creative layer: subtle paper/weave textures, editorial numbering, offset image frames, boutique stamp treatment, sea-glass backing panels, and testimonial/story depth without changing the brand palette or typography.
 
 ## Follow-Up Proposal
 
