@@ -1,20 +1,23 @@
 <section class="section newsletter">
   <div class="page-width">
-    {%- if section.settings.eyebrow != blank -%}
-      <div class="t-eyebrow text-center" style="color: var(--color-sand); margin-bottom: 12px;">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.newsletter_section.eyebrow', default: 'Stay in touch' %}</div>
-    {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h2 class="t-h2 text-center" style="color: var(--color-washed-white);">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.newsletter_section.heading', default: 'Studio notes & new arrivals' %}</h2>
-    {%- endif -%}
-    <p class="text-center" style="color: var(--color-sand); max-width: 540px; margin: 14px auto 0;">
-      {% render 'i18n-default', value: section.settings.body, key: 'homepage.newsletter_section.body', default: 'Early access to new coastal pieces, styling inspiration, and the occasional note from the studio.' %}
-    </p>
+    <header class="section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="t-eyebrow section-header__eyebrow newsletter__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.newsletter_section.eyebrow', default: 'Stay in touch' %}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="t-h2 newsletter__heading">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.newsletter_section.heading', default: 'Studio notes & new arrivals' %}</h2>
+      {%- endif -%}
+      <p class="newsletter__text">
+        {% render 'i18n-default', value: section.settings.body, key: 'homepage.newsletter_section.body', default: 'Early access to new coastal pieces, styling inspiration, and the occasional note from the studio.' %}
+      </p>
+    </header>
+
     {%- form 'customer', class: 'newsletter-form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
       <input type="email" name="contact[email]" required placeholder="{{ section.settings.placeholder }}" aria-label="Email address">
       <button type="submit" class="btn">{{ section.settings.button_label }}</button>
       {%- if form.posted_successfully? -%}
-        <p style="width: 100%; margin-top: 14px; color: var(--color-sand); font-size: 0.86rem;">Thank you — keep an eye on your inbox.</p>
+        <p class="newsletter__success">Thank you — keep an eye on your inbox.</p>
       {%- endif -%}
     {%- endform -%}
   </div>

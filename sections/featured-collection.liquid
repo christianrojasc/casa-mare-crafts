@@ -5,20 +5,22 @@
 
 <section class="section{% if section.settings.dark %} section--dark{% elsif section.settings.sand %} section--sand{% endif %}">
   <div class="page-width">
-    {%- if section.settings.eyebrow != blank -%}
-      <div class="t-eyebrow text-center" style="margin-bottom: 14px;">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.featured.eyebrow', default: 'New arrivals' %}</div>
-    {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h2 class="t-h2 text-center">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.featured.heading', default: 'Artisan-made pieces from the studio' %}</h2>
-    {%- endif -%}
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
-    </div>
-    {%- if section.settings.description != blank -%}
-      <p class="text-center t-muted" style="max-width: 560px; margin: 0 auto 44px;">{% render 'i18n-default', value: section.settings.description, key: 'homepage.featured.description', default: 'Handmade with natural texture and coastal warmth — designed to bring a soft, organic touch to your home.' %}</p>
-    {%- endif -%}
+    <header class="section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="t-eyebrow section-header__eyebrow">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.featured.eyebrow', default: 'New arrivals' %}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="t-h2">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.featured.heading', default: 'Artisan-made pieces from the studio' %}</h2>
+      {%- endif -%}
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+      {%- if section.settings.description != blank -%}
+        <p class="section-header__text t-muted">{% render 'i18n-default', value: section.settings.description, key: 'homepage.featured.description', default: 'Handmade with natural texture and coastal warmth — designed to bring a soft, organic touch to your home.' %}</p>
+      {%- endif -%}
+    </header>
 
-    <div class="grid grid--3" style="margin-top: 40px;">
+    <div class="grid grid--3 section-grid featured-collection__grid">
       {%- if collection.products.size > 0 -%}
         {%- for product in collection.products limit: limit -%}
           {% render 'product-card', product: product %}
@@ -31,7 +33,7 @@
     </div>
 
     {%- if section.settings.show_view_all and collection -%}
-      <div class="text-center" style="margin-top: 56px;">
+      <div class="section-actions">
         <a href="{{ collection.url }}" class="btn {% if section.settings.dark %}btn--outline-light{% else %}btn--outline{% endif %}">{{ 'homepage.featured.cta' | t }}</a>
       </div>
     {%- endif -%}
