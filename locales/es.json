@@ -144,6 +144,78 @@
       "heading": "Notas del estudio y novedades",
       "body": "Acceso anticipado a nuevas piezas costeras, inspiración para estilizar y alguna que otra nota desde el estudio."
     },
+    "lookbook_hero": {
+      "eyebrow": "En casa junto al agua",
+      "heading": "Objetos con la calidez serena de una tarde costera.",
+      "scroll_cue": "Desplazar"
+    },
+    "mosaic_grid": {
+      "eyebrow": "Coleccionado por estancia",
+      "heading": "Una casa editada en texturas, no en tendencias.",
+      "tile_1": "Cerámica",
+      "tile_2": "Tejido",
+      "tile_3": "Lino",
+      "tile_4": "Mesa",
+      "tile_5": "Hallazgos"
+    },
+    "editorial_spread": {
+      "eyebrow": "Nota material",
+      "quote": "Una habitación se vuelve más suave cuando cada objeto lleva el tacto de la mano.",
+      "caption": "Formas hechas a mano, fibras naturales y tonos neutros cálidos compuestos para rituales cotidianos.",
+      "credit": "Estudio de estilismo Casa Mare"
+    },
+    "scroll_shelf": {
+      "eyebrow": "Viñetas de estilo",
+      "heading": "Pequeñas composiciones para habitaciones que respiran.",
+      "vignette_1": {
+        "eyebrow": "Repisa",
+        "title": "Una vasija baja, un pliegue de lino, un borde sereno.",
+        "body": "Piezas en capas con espacio entre ellas, compuestas para el uso diario y no solo para exhibir."
+      },
+      "vignette_2": {
+        "eyebrow": "Sobremesa",
+        "title": "Superficies cálidas de sol, puestas sin ceremonia.",
+        "body": "Cerámica, tejido y madera se encuentran en pequeños rituales que mantienen la habitación vivida."
+      },
+      "vignette_3": {
+        "eyebrow": "Rincón",
+        "title": "Un detalle hecho a mano puede aquietar toda la habitación.",
+        "body": "Una composición contenida para entradas, dormitorios y los lugares donde la luz descansa más tiempo."
+      }
+    },
+    "process_strip": {
+      "eyebrow": "Proceso",
+      "heading": "Elegido, formado y curado al sol con paciencia.",
+      "step_1": {
+        "number": "01",
+        "title": "Elegido",
+        "caption": "Materiales naturales seleccionados por su calidez, peso y variación serena."
+      },
+      "step_2": {
+        "number": "02",
+        "title": "Formado",
+        "caption": "Cada pieza se forma a mano, dejando pequeñas huellas de quien la hizo."
+      },
+      "step_3": {
+        "number": "03",
+        "title": "Curado",
+        "caption": "Acabado lentamente en tonos neutros suaves para habitaciones vividas."
+      }
+    },
+    "marquee_mark": {
+      "words": "FRENTE AL MAR &middot; HECHO A MANO &middot; VIDA LENTA &middot; CALIDEZ DE SOL"
+    },
+    "founder_note": {
+      "eyebrow": "Desde el estudio",
+      "note": "Elijo piezas por cómo suavizan una habitación: el borde irregular, la veta cálida, la superficie que se ve mejor con la luz de la tarde.",
+      "signature": "Casa Mare Crafts"
+    },
+    "featured_journal": {
+      "eyebrow": "Diario / Primavera 2026",
+      "title": "La arquitectura serena de una habitación costera cálida.",
+      "excerpt": "Un breve estudio sobre neutros suaves, objetos hechos a mano y el espacio que hace que una casa frente al mar se sienta reunida con el tiempo.",
+      "link_label": "Leer el diario"
+    },
     "footer": {
       "brand_blurb": "Piezas costeras hechas a mano para hogares cálidos y vividos frente al mar. Texturas naturales, tonos suaves y detalles cuidados.",
       "copyright_suffix": "Todos los derechos reservados."

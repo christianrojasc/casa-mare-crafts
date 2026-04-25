@@ -1,0 +1,110 @@
+<section class="editorial-section editorial-spread editorial-spread--{{ section.settings.tone }}{% if section.settings.reverse %} editorial-spread--reverse{% endif %} editorial-reveal" aria-labelledby="editorial-spread-heading-{{ section.id }}">
+  <div class="page-width editorial-spread__inner">
+    <div class="editorial-spread__quote-panel">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="editorial-eyebrow">
+          {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.editorial_spread.eyebrow', default: 'Material note' %}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.quote != blank -%}
+        <blockquote id="editorial-spread-heading-{{ section.id }}" class="editorial-spread__quote">
+          {% render 'i18n-default', value: section.settings.quote, key: 'homepage.editorial_spread.quote', default: 'A room becomes softer when every object carries the touch of the hand.' %}
+        </blockquote>
+      {%- endif -%}
+    </div>
+
+    <figure class="editorial-spread__figure">
+      <div class="editorial-spread__image-frame">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1400 }}"
+            srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1000 }} 1000w, {{ section.settings.image | image_url: width: 1400 }} 1400w, {{ section.settings.image | image_url: width: 1800 }} 1800w"
+            sizes="(min-width: 990px) 45vw, 100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.caption | escape }}"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.caption != blank -%}
+        <figcaption class="editorial-spread__caption">
+          <span>
+            {% render 'i18n-default', value: section.settings.caption, key: 'homepage.editorial_spread.caption', default: 'Hand-shaped forms, natural fiber, and warm neutral tones composed for everyday rituals.' %}
+          </span>
+          {%- if section.settings.credit != blank -%}
+            <small>
+              {% render 'i18n-default', value: section.settings.credit, key: 'homepage.editorial_spread.credit', default: 'Casa Mare styling studio' %}
+            </small>
+          {%- endif -%}
+        </figcaption>
+      {%- endif -%}
+    </figure>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial spread",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse layout",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "tone",
+      "label": "Background tone",
+      "default": "washed",
+      "options": [
+        {
+          "value": "washed",
+          "label": "Washed white"
+        },
+        {
+          "value": "sand",
+          "label": "Sand"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Material note"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Pull quote",
+      "default": "A room becomes softer when every object carries the touch of the hand."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Portrait lifestyle image"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Overlapping caption",
+      "default": "Hand-shaped forms, natural fiber, and warm neutral tones composed for everyday rituals."
+    },
+    {
+      "type": "text",
+      "id": "credit",
+      "label": "Caption credit",
+      "default": "Casa Mare styling studio"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial spread"
+    }
+  ]
+}
+{% endschema %}

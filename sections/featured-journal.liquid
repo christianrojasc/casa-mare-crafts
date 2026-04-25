@@ -1,0 +1,120 @@
+<section class="editorial-section featured-journal editorial-reveal" aria-labelledby="featured-journal-heading-{{ section.id }}">
+  {%- assign article = articles[section.settings.article] -%}
+  <div class="page-width featured-journal__inner">
+    <div class="featured-journal__image">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1600 }}"
+          srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1600 }} 1600w, {{ section.settings.image | image_url: width: 2200 }} 2200w"
+          sizes="(min-width: 990px) 56vw, 100vw"
+          alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+        >
+      {%- elsif article.image != blank -%}
+        <img
+          src="{{ article.image | image_url: width: 1600 }}"
+          srcset="{{ article.image | image_url: width: 800 }} 800w, {{ article.image | image_url: width: 1200 }} 1200w, {{ article.image | image_url: width: 1600 }} 1600w, {{ article.image | image_url: width: 2200 }} 2200w"
+          sizes="(min-width: 990px) 56vw, 100vw"
+          alt="{{ article.image.alt | default: article.title | escape }}"
+          loading="lazy"
+          width="{{ article.image.width }}"
+          height="{{ article.image.height }}"
+        >
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+    <div class="featured-journal__copy">
+      {%- if article != blank -%}
+        <p class="editorial-eyebrow">
+          {{ article.published_at | date: format: 'month_day_year' }}
+        </p>
+        <h2 id="featured-journal-heading-{{ section.id }}">{{ article.title }}</h2>
+        {%- if article.excerpt_or_content != blank -%}
+          <div class="featured-journal__excerpt">
+            {{ article.excerpt_or_content | strip_html | truncate: 150 }}
+          </div>
+        {%- endif -%}
+        <a class="featured-journal__link" href="{{ article.url }}">
+          {% render 'i18n-default', value: section.settings.link_label, key: 'homepage.featured_journal.link_label', default: 'Read the journal' %}
+        </a>
+      {%- else -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="editorial-eyebrow">
+            {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.featured_journal.eyebrow', default: 'Journal / Spring 2026' %}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 id="featured-journal-heading-{{ section.id }}">
+            {% render 'i18n-default', value: section.settings.title, key: 'homepage.featured_journal.title', default: 'The quiet architecture of a warm coastal room.' %}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.excerpt != blank -%}
+          <p class="featured-journal__excerpt">
+            {% render 'i18n-default', value: section.settings.excerpt, key: 'homepage.featured_journal.excerpt', default: 'A short study in soft neutrals, handmade objects, and the breathing room that makes a beach home feel collected over time.' %}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.link != blank -%}
+          <a class="featured-journal__link" href="{{ section.settings.link }}">
+            {% render 'i18n-default', value: section.settings.link_label, key: 'homepage.featured_journal.link_label', default: 'Read the journal' %}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured journal",
+  "settings": [
+    {
+      "type": "article",
+      "id": "article",
+      "label": "Featured article"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback or override image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Fallback eyebrow date",
+      "default": "Journal / Spring 2026"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Fallback title",
+      "default": "The quiet architecture of a warm coastal room."
+    },
+    {
+      "type": "textarea",
+      "id": "excerpt",
+      "label": "Fallback excerpt",
+      "default": "A short study in soft neutrals, handmade objects, and the breathing room that makes a beach home feel collected over time."
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Fallback journal link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Read the journal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured journal"
+    }
+  ]
+}
+{% endschema %}

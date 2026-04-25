@@ -1,0 +1,158 @@
+<section class="editorial-section scroll-shelf editorial-reveal" aria-labelledby="scroll-shelf-heading-{{ section.id }}">
+  <div class="page-width scroll-shelf__intro">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="editorial-eyebrow">
+        {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.scroll_shelf.eyebrow', default: 'Styled vignettes' %}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 id="scroll-shelf-heading-{{ section.id }}" class="scroll-shelf__heading">
+        {% render 'i18n-default', value: section.settings.heading, key: 'homepage.scroll_shelf.heading', default: 'Small arrangements for rooms that breathe.' %}
+      </h2>
+    {%- endif -%}
+  </div>
+
+  <div class="scroll-shelf__rail" aria-label="{{ section.settings.heading | escape }}">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign title_key = 'homepage.scroll_shelf.vignette_' | append: forloop.index | append: '.title'
+        assign body_key = 'homepage.scroll_shelf.vignette_' | append: forloop.index | append: '.body'
+        assign eyebrow_key = 'homepage.scroll_shelf.vignette_' | append: forloop.index | append: '.eyebrow'
+        case forloop.index
+          when 1
+            assign default_eyebrow = 'Shelf'
+            assign default_title = 'A low vessel, a linen fold, a quiet edge.'
+            assign default_body = 'Layered pieces with room between them, composed for daily use rather than display alone.'
+          when 2
+            assign default_eyebrow = 'Tabletop'
+            assign default_title = 'Sun-warmed surfaces, set without ceremony.'
+            assign default_body = 'Ceramic, woven, and wood tones meet in small rituals that keep the room feeling lived-in.'
+          when 3
+            assign default_eyebrow = 'Corner'
+            assign default_title = 'One handmade detail can slow the whole room.'
+            assign default_body = 'A restrained arrangement for entries, bedrooms, and the places where light rests longest.'
+          else
+            assign default_eyebrow = block.settings.eyebrow
+            assign default_title = block.settings.title
+            assign default_body = block.settings.body
+        endcase
+      -%}
+      <article class="scroll-shelf__card" {{ block.shopify_attributes }}>
+        <div class="scroll-shelf__image">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 1000 }}"
+              srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 800 }} 800w, {{ block.settings.image | image_url: width: 1000 }} 1000w, {{ block.settings.image | image_url: width: 1400 }} 1400w"
+              sizes="(min-width: 990px) 36vw, 82vw"
+              alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="scroll-shelf__copy">
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="scroll-shelf__eyebrow">
+              {% render 'i18n-default', value: block.settings.eyebrow, key: eyebrow_key, default: default_eyebrow %}
+            </p>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h3>
+              {% render 'i18n-default', value: block.settings.title, key: title_key, default: default_title %}
+            </h3>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <p>
+              {% render 'i18n-default', value: block.settings.body, key: body_key, default: default_body %}
+            </p>
+          {%- endif -%}
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Horizontal scroll shelf",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Styled vignettes"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Small arrangements for rooms that breathe."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "vignette",
+      "name": "Vignette",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Vignette type",
+          "default": "Shelf"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "A low vessel, a linen fold, a quiet edge."
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Caption",
+          "default": "Layered pieces with room between them, composed for daily use rather than display alone."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Horizontal scroll shelf",
+      "blocks": [
+        {
+          "type": "vignette",
+          "settings": {
+            "eyebrow": "Shelf",
+            "title": "A low vessel, a linen fold, a quiet edge.",
+            "body": "Layered pieces with room between them, composed for daily use rather than display alone."
+          }
+        },
+        {
+          "type": "vignette",
+          "settings": {
+            "eyebrow": "Tabletop",
+            "title": "Sun-warmed surfaces, set without ceremony.",
+            "body": "Ceramic, woven, and wood tones meet in small rituals that keep the room feeling lived-in."
+          }
+        },
+        {
+          "type": "vignette",
+          "settings": {
+            "eyebrow": "Corner",
+            "title": "One handmade detail can slow the whole room.",
+            "body": "A restrained arrangement for entries, bedrooms, and the places where light rests longest."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
