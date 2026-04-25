@@ -1,0 +1,155 @@
+<section class="editorial-section mosaic-grid editorial-reveal" aria-labelledby="mosaic-grid-heading-{{ section.id }}">
+  <div class="page-width">
+    <div class="mosaic-grid__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="editorial-eyebrow">
+          {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.mosaic_grid.eyebrow', default: 'Collected by room' %}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 id="mosaic-grid-heading-{{ section.id }}" class="mosaic-grid__heading">
+          {% render 'i18n-default', value: section.settings.heading, key: 'homepage.mosaic_grid.heading', default: 'A house edited in textures, not trends.' %}
+        </h2>
+      {%- endif -%}
+    </div>
+
+    <div class="mosaic-grid__layout">
+      {%- for block in section.blocks limit: 5 -%}
+        {%- liquid
+          assign collection = collections[block.settings.collection]
+          assign tile_image = block.settings.image
+          if tile_image == blank and collection.featured_image != blank
+            assign tile_image = collection.featured_image
+          endif
+          assign label_key = 'homepage.mosaic_grid.tile_' | append: forloop.index
+          assign fallback_label = block.settings.label
+          if fallback_label == blank
+            assign fallback_label = collection.title
+          endif
+          case forloop.index
+            when 1
+              assign default_label = 'Ceramics'
+            when 2
+              assign default_label = 'Woven'
+            when 3
+              assign default_label = 'Linen'
+            when 4
+              assign default_label = 'Table'
+            when 5
+              assign default_label = 'Found'
+            else
+              assign default_label = fallback_label
+          endcase
+          assign link_url = '#'
+          if collection.url != blank
+            assign link_url = collection.url
+          endif
+        -%}
+        <a class="mosaic-grid__tile mosaic-grid__tile--{{ forloop.index }}" href="{{ link_url }}" {{ block.shopify_attributes }}>
+          <span class="mosaic-grid__image-wrap">
+            {%- if tile_image != blank -%}
+              <img
+                src="{{ tile_image | image_url: width: 1200 }}"
+                srcset="{{ tile_image | image_url: width: 600 }} 600w, {{ tile_image | image_url: width: 900 }} 900w, {{ tile_image | image_url: width: 1200 }} 1200w, {{ tile_image | image_url: width: 1600 }} 1600w"
+                sizes="(min-width: 990px) 40vw, 100vw"
+                alt="{{ tile_image.alt | default: fallback_label | escape }}"
+                loading="lazy"
+                width="{{ tile_image.width }}"
+                height="{{ tile_image.height }}"
+              >
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </span>
+          {%- if fallback_label != blank -%}
+            <span class="mosaic-grid__label">
+              {% render 'i18n-default', value: fallback_label, key: label_key, default: default_label %}
+            </span>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mosaic grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Collected by room"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A house edited in textures, not trends."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Collection tile",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Italic label",
+          "default": "Ceramics"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mosaic grid",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Ceramics"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Woven"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Linen"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Table"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Found"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

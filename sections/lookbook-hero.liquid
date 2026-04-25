@@ -1,0 +1,73 @@
+<section class="lookbook-hero editorial-reveal" aria-labelledby="lookbook-hero-heading-{{ section.id }}">
+  <div class="lookbook-hero__media" aria-hidden="true">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 2400 }}"
+        srcset="{{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1800 }} 1800w, {{ section.settings.image | image_url: width: 2400 }} 2400w, {{ section.settings.image | image_url: width: 3000 }} 3000w"
+        sizes="100vw"
+        alt=""
+        loading="eager"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+      >
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg lookbook-hero__placeholder' }}
+    {%- endif -%}
+  </div>
+  <div class="lookbook-hero__veil" aria-hidden="true"></div>
+
+  <div class="lookbook-hero__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="editorial-eyebrow lookbook-hero__eyebrow">
+        {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.lookbook_hero.eyebrow', default: 'At home by the water' %}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h1 id="lookbook-hero-heading-{{ section.id }}" class="lookbook-hero__heading">
+        {% render 'i18n-default', value: section.settings.heading, key: 'homepage.lookbook_hero.heading', default: 'Objects with the quiet warmth of a coastal afternoon.' %}
+      </h1>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.scroll_cue != blank -%}
+    <p class="lookbook-hero__scroll">
+      {% render 'i18n-default', value: section.settings.scroll_cue, key: 'homepage.lookbook_hero.scroll_cue', default: 'Scroll' %}
+    </p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Lookbook hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Full-bleed lifestyle image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Italic eyebrow",
+      "default": "At home by the water"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Objects with the quiet warmth of a coastal afternoon."
+    },
+    {
+      "type": "text",
+      "id": "scroll_cue",
+      "label": "Scroll cue",
+      "default": "Scroll"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook hero"
+    }
+  ]
+}
+{% endschema %}

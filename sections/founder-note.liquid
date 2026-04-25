@@ -1,0 +1,73 @@
+<section class="editorial-section founder-note editorial-reveal" aria-labelledby="founder-note-heading-{{ section.id }}">
+  <div class="page-width founder-note__inner">
+    <div class="founder-note__portrait" aria-hidden="true">
+      {%- if section.settings.portrait != blank -%}
+        <img
+          src="{{ section.settings.portrait | image_url: width: 400 }}"
+          srcset="{{ section.settings.portrait | image_url: width: 200 }} 200w, {{ section.settings.portrait | image_url: width: 320 }} 320w, {{ section.settings.portrait | image_url: width: 400 }} 400w"
+          sizes="96px"
+          alt=""
+          loading="lazy"
+          width="{{ section.settings.portrait.width }}"
+          height="{{ section.settings.portrait.height }}"
+        >
+      {%- else -%}
+        {{ 'person' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+    <div class="founder-note__copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="editorial-eyebrow">
+          {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.founder_note.eyebrow', default: 'From the studio' %}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}
+        <h2 id="founder-note-heading-{{ section.id }}">
+          {% render 'i18n-default', value: section.settings.note, key: 'homepage.founder_note.note', default: 'I choose pieces for the way they soften a room: the small irregular rim, the warm grain, the surface that looks better in afternoon light.' %}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.signature != blank -%}
+        <p class="founder-note__signature">
+          {% render 'i18n-default', value: section.settings.signature, key: 'homepage.founder_note.signature', default: 'Casa Mare Crafts' %}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder note",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "portrait",
+      "label": "Founder portrait"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "From the studio"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Founder note",
+      "default": "I choose pieces for the way they soften a room: the small irregular rim, the warm grain, the surface that looks better in afternoon light."
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature",
+      "default": "Casa Mare Crafts"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder note"
+    }
+  ]
+}
+{% endschema %}

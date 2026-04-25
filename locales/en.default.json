@@ -144,6 +144,78 @@
       "heading": "Studio notes & new arrivals",
       "body": "Early access to new coastal pieces, styling inspiration, and the occasional note from the studio."
     },
+    "lookbook_hero": {
+      "eyebrow": "At home by the water",
+      "heading": "Objects with the quiet warmth of a coastal afternoon.",
+      "scroll_cue": "Scroll"
+    },
+    "mosaic_grid": {
+      "eyebrow": "Collected by room",
+      "heading": "A house edited in textures, not trends.",
+      "tile_1": "Ceramics",
+      "tile_2": "Woven",
+      "tile_3": "Linen",
+      "tile_4": "Table",
+      "tile_5": "Found"
+    },
+    "editorial_spread": {
+      "eyebrow": "Material note",
+      "quote": "A room becomes softer when every object carries the touch of the hand.",
+      "caption": "Hand-shaped forms, natural fiber, and warm neutral tones composed for everyday rituals.",
+      "credit": "Casa Mare styling studio"
+    },
+    "scroll_shelf": {
+      "eyebrow": "Styled vignettes",
+      "heading": "Small arrangements for rooms that breathe.",
+      "vignette_1": {
+        "eyebrow": "Shelf",
+        "title": "A low vessel, a linen fold, a quiet edge.",
+        "body": "Layered pieces with room between them, composed for daily use rather than display alone."
+      },
+      "vignette_2": {
+        "eyebrow": "Tabletop",
+        "title": "Sun-warmed surfaces, set without ceremony.",
+        "body": "Ceramic, woven, and wood tones meet in small rituals that keep the room feeling lived-in."
+      },
+      "vignette_3": {
+        "eyebrow": "Corner",
+        "title": "One handmade detail can slow the whole room.",
+        "body": "A restrained arrangement for entries, bedrooms, and the places where light rests longest."
+      }
+    },
+    "process_strip": {
+      "eyebrow": "Process",
+      "heading": "Sourced, shaped, and sun-cured with patience.",
+      "step_1": {
+        "number": "01",
+        "title": "Sourced",
+        "caption": "Natural materials chosen for warmth, weight, and quiet variation."
+      },
+      "step_2": {
+        "number": "02",
+        "title": "Shaped",
+        "caption": "Each piece is formed by hand, leaving small traces of the maker."
+      },
+      "step_3": {
+        "number": "03",
+        "title": "Sun-cured",
+        "caption": "Finished slowly in soft neutral tones made for lived-in rooms."
+      }
+    },
+    "marquee_mark": {
+      "words": "BY THE SEA &middot; HANDMADE &middot; SLOW LIVING &middot; SUN-WARMED"
+    },
+    "founder_note": {
+      "eyebrow": "From the studio",
+      "note": "I choose pieces for the way they soften a room: the small irregular rim, the warm grain, the surface that looks better in afternoon light.",
+      "signature": "Casa Mare Crafts"
+    },
+    "featured_journal": {
+      "eyebrow": "Journal / Spring 2026",
+      "title": "The quiet architecture of a warm coastal room.",
+      "excerpt": "A short study in soft neutrals, handmade objects, and the breathing room that makes a beach home feel collected over time.",
+      "link_label": "Read the journal"
+    },
     "footer": {
       "brand_blurb": "Handmade coastal pieces for warm, lived-in beach homes. Natural textures, soft neutrals, and thoughtfully made details.",
       "copyright_suffix": "All rights reserved."

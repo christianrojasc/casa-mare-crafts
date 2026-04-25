@@ -1,0 +1,133 @@
+<section class="editorial-section process-strip editorial-reveal" aria-labelledby="process-strip-heading-{{ section.id }}">
+  <div class="page-width">
+    <div class="process-strip__intro">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="editorial-eyebrow">
+          {% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.process_strip.eyebrow', default: 'Process' %}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 id="process-strip-heading-{{ section.id }}" class="process-strip__heading">
+          {% render 'i18n-default', value: section.settings.heading, key: 'homepage.process_strip.heading', default: 'Sourced, shaped, and sun-cured with patience.' %}
+        </h2>
+      {%- endif -%}
+    </div>
+
+    <div class="process-strip__grid">
+      {%- for block in section.blocks limit: 3 -%}
+        {%- liquid
+          assign number_key = 'homepage.process_strip.step_' | append: forloop.index | append: '.number'
+          assign title_key = 'homepage.process_strip.step_' | append: forloop.index | append: '.title'
+          assign caption_key = 'homepage.process_strip.step_' | append: forloop.index | append: '.caption'
+          case forloop.index
+            when 1
+              assign default_number = '01'
+              assign default_title = 'Sourced'
+              assign default_caption = 'Natural materials chosen for warmth, weight, and quiet variation.'
+            when 2
+              assign default_number = '02'
+              assign default_title = 'Shaped'
+              assign default_caption = 'Each piece is formed by hand, leaving small traces of the maker.'
+            when 3
+              assign default_number = '03'
+              assign default_title = 'Sun-cured'
+              assign default_caption = 'Finished slowly in soft neutral tones made for lived-in rooms.'
+            else
+              assign default_number = block.settings.number
+              assign default_title = block.settings.title
+              assign default_caption = block.settings.caption
+          endcase
+        -%}
+        <article class="process-strip__item" {{ block.shopify_attributes }}>
+          <span class="process-strip__number">
+            {% render 'i18n-default', value: block.settings.number, key: number_key, default: default_number %}
+          </span>
+          <h3>
+            {% render 'i18n-default', value: block.settings.title, key: title_key, default: default_title %}
+          </h3>
+          <p>
+            {% render 'i18n-default', value: block.settings.caption, key: caption_key, default: default_caption %}
+          </p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Process"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Sourced, shaped, and sun-cured with patience."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Numeral",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "One-word title",
+          "default": "Sourced"
+        },
+        {
+          "type": "textarea",
+          "id": "caption",
+          "label": "Two-line caption",
+          "default": "Natural materials chosen for warmth, weight, and quiet variation."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process strip",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Sourced",
+            "caption": "Natural materials chosen for warmth, weight, and quiet variation."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Shaped",
+            "caption": "Each piece is formed by hand, leaving small traces of the maker."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Sun-cured",
+            "caption": "Finished slowly in soft neutral tones made for lived-in rooms."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

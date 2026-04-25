@@ -1,0 +1,29 @@
+{%- assign marquee_label = section.settings.words | replace: '&middot;', ' ' | strip_html -%}
+<section class="marquee-mark" aria-label="{{ marquee_label | escape }}">
+  <div class="marquee-mark__track">
+    {%- for i in (1..4) -%}
+      <span class="marquee-mark__phrase" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+        {% render 'i18n-default', value: section.settings.words, key: 'homepage.marquee_mark.words', default: 'BY THE SEA &middot; HANDMADE &middot; SLOW LIVING &middot; SUN-WARMED' %}
+      </span>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee mark",
+  "settings": [
+    {
+      "type": "text",
+      "id": "words",
+      "label": "Marquee words",
+      "default": "BY THE SEA &middot; HANDMADE &middot; SLOW LIVING &middot; SUN-WARMED"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee mark"
+    }
+  ]
+}
+{% endschema %}
