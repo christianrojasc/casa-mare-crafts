@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="page-width text-center" style="max-width: 640px;">
+    <div class="t-script" style="font-size: 3rem;">{{ '404.eyebrow' | t }}</div>
+    <h1 class="t-h1" style="margin-top: 10px;">{{ '404.title' | t }}</h1>
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+    </div>
+    <p class="t-muted" style="margin-top: 14px;">{{ '404.body' | t }}</p>
+    <div style="margin-top: 32px;">
+      <a href="{{ routes.root_url }}" class="btn btn--navy">{{ '404.cta' | t }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404" }
+{% endschema %}

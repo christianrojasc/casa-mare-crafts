@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="page-width">
+    <header style="text-align: center; margin-bottom: 36px;">
+      <div class="t-eyebrow">{{ 'general.search.search' | t }}</div>
+      <h1 class="t-h2" style="margin-top: 8px;">{% if search.terms %}{{ 'general.search.results_for' | t: terms: search.terms }}{% else %}{{ 'general.search.prompt' | t }}{% endif %}</h1>
+    </header>
+
+    <form action="{{ routes.search_url }}" method="get" class="field" style="max-width: 520px; margin: 0 auto;">
+      <label for="q" class="visually-hidden">{{ 'general.search.search' | t }}</label>
+      <input id="q" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" autofocus>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results.size == 0 -%}
+        <p class="t-muted text-center" style="margin-top: 44px;">{{ 'general.search.no_results' | t }}</p>
+      {%- else -%}
+        <div class="grid grid--3" style="margin-top: 56px;">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <a href="{{ item.url }}" style="display: block;">
+                <div class="t-eyebrow">{{ item.object_type | capitalize }}</div>
+                <h3 class="t-h3" style="margin-top: 8px;">{{ item.title }}</h3>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search" }
+{% endschema %}

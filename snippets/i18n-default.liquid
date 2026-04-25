@@ -1,0 +1,27 @@
+{% doc %}
+  Renders a section setting value, or falls back to a locale-file translation
+  when (a) the viewer's locale is not English AND (b) the setting still equals
+  the English default (i.e. the merchant hasn't customized it).
+
+  Once the merchant customizes the field or sets up Shopify's Translate & Adapt,
+  `value` will already contain the correct per-locale text and is used as-is.
+
+  @param {string} value - the current section/block setting value
+  @param {string} key - the locale key to look up (e.g. "homepage.hero.heading")
+  @param {string} default - the English default string used to detect non-customization
+
+  @example
+  {% render 'i18n-default', value: section.settings.heading, key: 'homepage.hero.heading', default: 'Handmade coastal pieces for warm, lived-in beach homes.' %}
+{% enddoc %}
+{%- liquid
+  assign output = value
+  if request.locale.iso_code != 'en' and value == default
+    capture translated
+      echo key | t
+    endcapture
+    unless translated contains 'translation missing'
+      assign output = translated
+    endunless
+  endif
+  echo output
+-%}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="{{ settings.color_navy }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- else -%}
+      <meta name="description" content="Handmade coastal pieces for warm, lived-in beach homes. {{ shop.name }}.">
+    {%- endif -%}
+
+    {% render 'meta-tags' %}
+
+    {%- liquid
+      assign font_heading   = settings.font_heading
+      assign font_body      = settings.font_body
+      assign font_heading_i = font_heading | font_modify: 'style', 'italic'
+      assign font_body_b    = font_body    | font_modify: 'weight', 'bolder'
+    -%}
+
+    <style>
+      {{ font_heading   | font_face: font_display: 'swap' }}
+      {{ font_heading_i | font_face: font_display: 'swap' }}
+      {{ font_body      | font_face: font_display: 'swap' }}
+      {{ font_body_b    | font_face: font_display: 'swap' }}
+
+      :root {
+        --color-navy:          {{ settings.color_navy }};
+        --color-washed-white:  {{ settings.color_washed_white }};
+        --color-sand:          {{ settings.color_sand }};
+        --color-sea-glass:     {{ settings.color_sea_glass }};
+        --color-driftwood:     {{ settings.color_driftwood }};
+        --color-clay:          {{ settings.color_clay }};
+
+        --color-bg:     {{ settings.color_background }};
+        --color-text:   {{ settings.color_text }};
+        --color-muted:  {{ settings.color_muted }};
+        --color-border: {{ settings.color_border }};
+
+        --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+        --font-body:    {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+
+        --font-weight-heading: 500;
+
+        --heading-scale: {{ settings.heading_scale | default: 110 | divided_by: 100.0 }};
+        --body-scale:    {{ settings.body_scale    | default: 100 | divided_by: 100.0 }};
+
+        --page-width: {{ settings.page_width | default: 1320 }}px;
+        --section-spacing: {{ settings.section_spacing | default: 104 }}px;
+
+        --radius: 2px;
+        --shadow-soft: 0 10px 30px rgba(16, 42, 67, 0.08);
+        --shadow-lift: 0 20px 60px rgba(16, 42, 67, 0.18);
+      }
+
+      {%- if settings.uppercase_nav -%}
+      .t-label { text-transform: uppercase; letter-spacing: 0.24em; }
+      {%- endif -%}
+    </style>
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <script>document.documentElement.classList.replace('no-js','js');</script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ template | replace: '.', '-' | handle }}">
+    <a class="skip-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+  </body>
+</html>

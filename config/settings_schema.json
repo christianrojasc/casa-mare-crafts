@@ -1,0 +1,215 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Casa Mare Crafts",
+    "theme_version": "1.0.0",
+    "theme_author": "Casa Mare Crafts",
+    "theme_documentation_url": "https://shopify.dev/docs/themes",
+    "theme_support_url": "https://casamarecrafts.com/pages/contact"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Primary logo (light background)",
+        "info": "Use logo-primary.png or logo-wordmark.png. Leave empty to fall back to the bundled primary logo."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_inverse",
+        "label": "Inverse logo (for navy footer)",
+        "info": "Optional — a white version. If empty, the primary logo is tinted white."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width (px)",
+        "min": 100,
+        "max": 320,
+        "step": 10,
+        "default": 180,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Casa Mare coastal palette"
+      },
+      {
+        "type": "paragraph",
+        "content": "Deep Navy · Washed White · Sand Beige · Sea Glass Green · Driftwood Brown · Sun-Washed Clay"
+      },
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Deep navy",
+        "default": "#102A43"
+      },
+      {
+        "type": "color",
+        "id": "color_washed_white",
+        "label": "Washed white",
+        "default": "#F7F3EC"
+      },
+      {
+        "type": "color",
+        "id": "color_sand",
+        "label": "Sand beige",
+        "default": "#D8C3A5"
+      },
+      {
+        "type": "color",
+        "id": "color_sea_glass",
+        "label": "Sea glass green",
+        "default": "#9DBBAE"
+      },
+      {
+        "type": "color",
+        "id": "color_driftwood",
+        "label": "Driftwood brown",
+        "default": "#8A6F58"
+      },
+      {
+        "type": "color",
+        "id": "color_clay",
+        "label": "Sun-washed clay",
+        "default": "#C98F6B"
+      },
+      {
+        "type": "header",
+        "content": "Functional mapping"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page background",
+        "default": "#F7F3EC"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text",
+        "default": "#5C4A3A"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Muted text",
+        "default": "#8A6F58"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border / divider",
+        "default": "#E3D8C4"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Casa Mare pairs Playfair Display (boutique serif, default) with Inter (clean body). If Cormorant Garamond is available in your Shopify font library, swap it in via the Heading font picker below — both fit the brand kit."
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "playfair_display_n5"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "inter_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Heading size scale",
+        "min": 90,
+        "max": 140,
+        "step": 5,
+        "default": 110,
+        "unit": "%"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "label": "Body size scale",
+        "min": 90,
+        "max": 120,
+        "step": 5,
+        "default": 100,
+        "unit": "%"
+      },
+      {
+        "type": "checkbox",
+        "id": "uppercase_nav",
+        "label": "Uppercase letterspaced nav/labels",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Max page width",
+        "min": 1100,
+        "max": 1600,
+        "step": 20,
+        "default": 1320,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "label": "Section vertical spacing",
+        "min": 40,
+        "max": 160,
+        "step": 4,
+        "default": 104,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Primary button style",
+        "options": [
+          { "value": "navy_solid", "label": "Solid navy" },
+          { "value": "navy_outline", "label": "Navy outline" }
+        ],
+        "default": "navy_solid"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_pinterest", "label": "Pinterest URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon (use logo-icon.png or logo-stamp.png)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{%- liquid
+  if product
+    assign target = product
+  elsif variant
+    assign target = variant
+  endif
+
+  assign price     = target.price
+  assign compare   = target.compare_at_price
+  assign on_sale   = false
+  if compare and compare > price
+    assign on_sale = true
+  endif
+-%}
+<span class="product-card__price">
+  {%- if on_sale -%}
+    <span class="on-sale">{{ price | money }}</span>
+    <span class="compare">{{ compare | money }}</span>
+  {%- else -%}
+    {{ price | money }}
+  {%- endif -%}
+</span>

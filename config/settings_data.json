@@ -1,0 +1,33 @@
+{
+  "current": {
+    "logo_width": 180,
+    "color_navy": "#102A43",
+    "color_washed_white": "#F7F3EC",
+    "color_sand": "#D8C3A5",
+    "color_sea_glass": "#9DBBAE",
+    "color_driftwood": "#8A6F58",
+    "color_clay": "#C98F6B",
+    "color_background": "#F7F3EC",
+    "color_text": "#5C4A3A",
+    "color_muted": "#8A6F58",
+    "color_border": "#E3D8C4",
+    "font_heading": "playfair_display_n5",
+    "font_body": "inter_n4",
+    "heading_scale": 110,
+    "body_scale": 100,
+    "uppercase_nav": true,
+    "page_width": 1320,
+    "section_spacing": 104,
+    "button_style": "navy_solid",
+    "sections": {}
+  },
+  "presets": {
+    "Casa Mare": {
+      "color_background": "#F7F3EC",
+      "color_text": "#5C4A3A",
+      "color_navy": "#102A43",
+      "color_sea_glass": "#9DBBAE",
+      "button_style": "navy_solid"
+    }
+  }
+}

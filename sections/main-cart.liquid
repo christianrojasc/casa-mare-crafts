@@ -1,0 +1,93 @@
+<section class="section">
+  <div class="page-width">
+    <header style="text-align: center; margin-bottom: 48px;">
+      <div class="t-eyebrow">{{ 'general.cart.title' | t }}</div>
+      <h1 class="t-h2" style="margin-top: 8px;">{{ 'general.cart.subtitle' | t }}</h1>
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+    </header>
+
+    {%- if cart.item_count > 0 -%}
+      {%- form 'cart', cart, novalidate: 'novalidate' -%}
+        <div style="display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start;">
+          <div>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+                  <th class="t-eyebrow" style="padding: 14px 0;" colspan="2">{{ 'general.cart.item' | t }}</th>
+                  <th class="t-eyebrow" style="padding: 14px 0;">{{ 'general.cart.quantity' | t }}</th>
+                  <th class="t-eyebrow" style="padding: 14px 0; text-align: right;">{{ 'general.cart.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for item in cart.items -%}
+                  <tr style="border-bottom: 1px solid var(--color-border); vertical-align: top;">
+                    <td style="padding: 22px 12px 22px 0; width: 120px;">
+                      <a href="{{ item.url }}">
+                        <img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" width="{{ item.image.width }}" height="{{ item.image.height }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 2px;">
+                      </a>
+                    </td>
+                    <td style="padding: 22px 0;">
+                      <a href="{{ item.url }}" style="font-family: var(--font-heading); font-weight: 500; color: var(--color-navy); font-size: 1.1rem;">{{ item.product.title }}</a>
+                      {%- unless item.product.has_only_default_variant -%}
+                        <div class="t-muted" style="font-size: 0.88rem; margin-top: 4px;">{{ item.variant.title }}</div>
+                      {%- endunless -%}
+                      <div class="t-muted" style="font-size: 0.88rem; margin-top: 4px;">{{ item.price | money }}</div>
+                    </td>
+                    <td style="padding: 22px 0;">
+                      <div class="quantity">
+                        <button type="button" data-qty-step="-1" aria-label="Decrease">−</button>
+                        <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" aria-label="Quantity">
+                        <button type="button" data-qty-step="1" aria-label="Increase">+</button>
+                      </div>
+                      <a href="{{ item.url_to_remove }}" class="t-muted" style="font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.2em; margin-top: 10px; display: inline-block;">{{ 'general.cart.remove' | t }}</a>
+                    </td>
+                    <td style="padding: 22px 0; text-align: right; font-family: var(--font-heading); font-weight: 500; color: var(--color-navy); font-size: 1.05rem;">
+                      {{ item.final_line_price | money }}
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+            <div style="margin-top: 28px;">
+              <button type="submit" name="update" class="btn btn--ghost">{{ 'general.cart.update' | t }}</button>
+            </div>
+          </div>
+
+          <aside style="background: var(--color-sand); padding: 32px; border-radius: 2px;">
+            <div class="t-eyebrow">{{ 'general.cart.summary' | t }}</div>
+            <dl style="margin-top: 18px;">
+              <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                <dt>{{ 'general.cart.subtotal' | t }}</dt>
+                <dd style="font-family: var(--font-heading); font-weight: 500; color: var(--color-navy);">{{ cart.items_subtotal_price | money }}</dd>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 8px 0; color: var(--color-muted);">
+                <dt>{{ 'general.cart.shipping' | t }}</dt>
+                <dd>{{ 'general.cart.shipping_calculated' | t }}</dd>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(16,42,67,0.15); margin-top: 10px;">
+                <dt style="font-family: var(--font-heading); font-weight: 500; color: var(--color-navy);">{{ 'general.cart.total' | t }}</dt>
+                <dd style="font-family: var(--font-heading); font-weight: 500; color: var(--color-navy); font-size: 1.2rem;">{{ cart.total_price | money }}</dd>
+              </div>
+            </dl>
+            <label class="field" style="margin-top: 18px;">
+              <span>{{ 'general.cart.order_notes' | t }}</span>
+              <textarea name="note" rows="3">{{ cart.note }}</textarea>
+            </label>
+            <button type="submit" name="checkout" class="btn btn--navy" style="width: 100%; margin-top: 20px;">{{ 'general.cart.checkout' | t }}</button>
+          </aside>
+        </div>
+      {%- endform -%}
+    {%- else -%}
+      <div class="text-center stack-lg" style="padding: 40px 0;">
+        <p class="t-muted">{{ 'general.cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--navy">{{ 'general.cart.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

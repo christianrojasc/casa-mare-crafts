@@ -1,0 +1,59 @@
+<section class="section">
+  <div class="page-width">
+    <header style="text-align: center; max-width: 720px; margin: 0 auto 56px;">
+      {%- if collection.image -%}
+        <img src="{{ collection.image | image_url: width: 1800 }}" alt="{{ collection.title | escape }}"
+             width="{{ collection.image.width }}" height="{{ collection.image.height }}"
+             style="width: 100%; aspect-ratio: 21/9; object-fit: cover; border-radius: 2px; margin-bottom: 40px;">
+      {%- endif -%}
+      <div class="t-eyebrow">{{ 'collections.general.label' | t }}</div>
+      <div class="t-script" style="font-size: 1.6rem; margin-top: 10px;">{{ collection.title }}</div>
+      <h1 class="t-h2" style="margin-top: 8px;">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="rte t-muted" style="margin-top: 18px;">{{ collection.description }}</div>
+      {%- endif -%}
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+    </header>
+
+    <div class="collection-toolbar" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px;">
+      <span class="t-muted">{{ 'collections.general.pieces' | t: count: collection.products_count }}</span>
+      <form method="get" class="field" style="flex-direction: row; align-items: center; gap: 10px;">
+        <label for="sort-by" class="t-eyebrow">{{ 'products.facets.sort_by' | t }}</label>
+        <select name="sort_by" id="sort-by" onchange="this.form.submit()">
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </form>
+    </div>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      <div class="grid grid--3">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <p class="t-muted">{{ 'collections.general.empty' | t }}</p>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" style="margin-top: 56px; text-align: center;">
+          {{ paginate | default_pagination }}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 6, "max": 48, "step": 3, "default": 12 }
+  ],
+  "presets": [{ "name": "Collection" }]
+}
+{% endschema %}

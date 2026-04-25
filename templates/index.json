@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "script_line": "By the sea",
+        "heading": "Handmade coastal pieces for warm, lived-in beach homes.",
+        "subheading": "Bring texture, warmth, and natural beauty into your space with artisan coastal decor inspired by life by the sea.",
+        "cta_label": "Shop the collection",
+        "cta_link": "shopify://collections/all",
+        "cta2_label": "Explore handmade pieces",
+        "dark": false
+      }
+    },
+    "collections": {
+      "type": "collection-list",
+      "settings": {
+        "eyebrow": "Shop by collection",
+        "heading": "Thoughtfully made for the beach home",
+        "subheading": "Handmade coastal pieces organized by mood, texture, and moment — each one made to bring warmth to your space.",
+        "sand": true
+      },
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "script": "Driftwood", "title": "Wall & Shelf Styling" } },
+        "c2": { "type": "collection", "settings": { "script": "Sea glass", "title": "Tabletop Pieces" } },
+        "c3": { "type": "collection", "settings": { "script": "Sand & linen", "title": "Coastal Accents" } }
+      },
+      "block_order": ["c1","c2","c3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "New arrivals",
+        "heading": "Artisan-made pieces from the studio",
+        "description": "A rotating selection of handmade coastal pieces — each with natural texture, soft neutrals, and the kind of warmth that only comes from slow making.",
+        "products_to_show": 6,
+        "show_view_all": true,
+        "dark": false
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "image_first": true,
+        "eyebrow": "Our story",
+        "script_line": "Slow living, by the sea",
+        "heading": "Made for homes that feel lived-in",
+        "body": "<p>Casa Mare Crafts was created for homes that feel relaxed, warm, and personal. Each piece is inspired by coastal living, natural materials, and the quiet beauty of handmade details.</p><p>Our pieces are designed to make your home feel collected, sun-warmed, and lived-in — never overly polished, never mass-produced.</p>",
+        "cta_label": "Read our story",
+        "dark": true
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "eyebrow": "From our customers",
+        "heading": "Homes that feel like Casa Mare",
+        "sand": true
+      },
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "quote": "Every piece arrived feeling sun-warmed and beautifully made. Our living room finally feels like the beach house we dreamed of.", "attribution": "Elena M., Malibu" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "The textures, the neutrals, the quiet craft. This is what coastal style should look like.", "attribution": "Thomas R., Newport" } },
+        "t3": { "type": "testimonial", "settings": { "quote": "It feels like walking into a home by the Mediterranean. Soft, warm, and thoughtfully made.", "attribution": "Carolina P., Santa Barbara" } }
+      },
+      "block_order": ["t1","t2","t3"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "collections", "featured", "story", "testimonials", "newsletter"]
+}

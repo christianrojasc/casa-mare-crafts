@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="page-width">
+    <header style="text-align: center; margin-bottom: 56px;">
+      <div class="t-eyebrow">{{ 'blog.label' | t }}</div>
+      <h1 class="t-h1" style="margin-top: 8px;">{{ blog.title }}</h1>
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+    </header>
+
+    {%- paginate blog.articles by 9 -%}
+      <div class="grid grid--3">
+        {%- for article in blog.articles -%}
+          <a href="{{ article.url }}" style="display: flex; flex-direction: column; gap: 16px;">
+            {%- if article.image -%}
+              <div style="aspect-ratio: 4/3; overflow: hidden; background: var(--color-sand); border-radius: 2px;">
+                <img src="{{ article.image | image_url: width: 900 }}" alt="{{ article.image.alt | escape }}" loading="lazy" width="{{ article.image.width }}" height="{{ article.image.height }}" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            {%- endif -%}
+            <div class="t-eyebrow">{{ article.published_at | date: '%B %Y' }}</div>
+            <h2 class="t-h3">{{ article.title }}</h2>
+            <p class="t-muted">{{ article.excerpt_or_content | strip_html | truncate: 140 }}</p>
+          </a>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" style="margin-top: 56px; text-align: center;">{{ paginate | default_pagination }}</nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog" }
+{% endschema %}

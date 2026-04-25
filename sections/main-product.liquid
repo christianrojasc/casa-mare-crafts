@@ -1,0 +1,103 @@
+<section class="section">
+  <div class="page-width">
+    <div class="product" data-gallery>
+      <div class="product__gallery">
+        <div class="main-image">
+          {%- if product.featured_image -%}
+            <img data-main-image
+                 src="{{ product.featured_image | image_url: width: 1400 }}"
+                 alt="{{ product.featured_image.alt | escape | default: product.title }}"
+                 width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="thumbs">
+            {%- for image in product.images limit: 8 -%}
+              <button type="button" data-thumb
+                      data-src="{{ image | image_url: width: 1400 }}"
+                      data-alt="{{ image.alt | escape }}"
+                      aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                      aria-label="Show image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 160 }}" alt="" loading="lazy" width="{{ image.width }}" height="{{ image.height }}">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="product__info">
+        {%- if product.vendor -%}
+          <div class="t-eyebrow">{{ product.vendor }}</div>
+        {%- endif -%}
+        <h1 class="product__title t-h1" style="margin-top: 6px;">{{ product.title }}</h1>
+        <div class="product__price" style="margin-top: 12px;">
+          {% render 'price', product: product %}
+        </div>
+
+        {%- form 'product', product, class: 'product-form', id: 'product-form', novalidate: 'novalidate' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="stack" style="margin-top: 28px;">
+                <div class="t-eyebrow">{{ option.name }}</div>
+                <div class="variant-picker" role="radiogroup" aria-label="{{ option.name }}">
+                  {%- for value in option.values -%}
+                    {%- assign input_id = 'opt-' | append: forloop.parentloop.index | append: '-' | append: forloop.index -%}
+                    <div style="position: relative;">
+                      <input type="radio"
+                             id="{{ input_id }}"
+                             name="options[{{ option.name | escape }}]"
+                             value="{{ value | escape }}"
+                             {% if option.selected_value == value %}checked{% endif %}>
+                      <label for="{{ input_id }}">{{ value }}</label>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <div style="display: flex; gap: 14px; align-items: center; margin-top: 32px; flex-wrap: wrap;">
+            <div class="quantity">
+              <button type="button" data-qty-step="-1" aria-label="Decrease quantity">−</button>
+              <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+              <button type="button" data-qty-step="1" aria-label="Increase quantity">+</button>
+            </div>
+            <button type="submit" name="add" class="btn btn--navy" {% unless product.available %}disabled{% endunless %}>
+              {%- if product.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+            </button>
+          </div>
+        {%- endform -%}
+
+        {%- if product.description != blank -%}
+          <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--color-border);">
+            <div class="t-eyebrow" style="margin-bottom: 14px;">{{ 'products.product.about' | t }}</div>
+            <div class="rte">{{ product.description }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_care -%}
+          <details style="margin-top: 22px; border-top: 1px solid var(--color-border); padding-top: 22px;">
+            <summary class="t-eyebrow" style="cursor: pointer;">{{ 'products.product.care' | t }}</summary>
+            <div class="stack" style="margin-top: 14px;">{{ section.settings.care_content }}</div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "checkbox", "id": "show_care", "label": "Show \"Care & craft\" details", "default": true },
+    { "type": "richtext",  "id": "care_content", "label": "Care & craft content",
+      "default": "<p>Each Casa Mare piece is shaped and finished by hand. Small variations in tone and texture are part of the craft and make every piece unique. Dust gently with a soft cloth; avoid harsh cleaners.</p>" }
+  ],
+  "presets": [{ "name": "Product" }]
+}
+{% endschema %}

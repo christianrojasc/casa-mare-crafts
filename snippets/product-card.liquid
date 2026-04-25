@@ -1,0 +1,40 @@
+{%- comment -%}
+  Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+{%- liquid
+  if product == blank
+    assign placeholder = true
+  endif
+-%}
+<a class="product-card" href="{{ product.url | default: '#' }}">
+  <div class="product-card__media">
+    {%- if placeholder -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- else -%}
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 900 }} 900w"
+          sizes="(min-width: 900px) 25vw, 50vw"
+          alt="{{ product.featured_image.alt | escape | default: product.title }}"
+          loading="lazy"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+        >
+      {%- endif -%}
+      {%- if product.compare_at_price > product.price -%}
+        <span class="badge">Sale</span>
+      {%- elsif product.tags contains 'new' -%}
+        <span class="badge">New</span>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <div>
+    <h3 class="product-card__title">{{ product.title | default: 'Example product' }}</h3>
+    {%- if placeholder -%}
+      <span class="product-card__price">$48.00</span>
+    {%- else -%}
+      {% render 'price', product: product %}
+    {%- endif -%}
+  </div>
+</a>

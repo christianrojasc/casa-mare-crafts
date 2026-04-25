@@ -1,0 +1,58 @@
+<section class="section{% if section.settings.dark %} section--dark{% elsif section.settings.sand %} section--sand{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="t-eyebrow text-center" style="margin-bottom: 14px;">{% render 'i18n-default', value: section.settings.eyebrow, key: 'homepage.testimonials.eyebrow', default: 'From our customers' %}</div>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="t-h2 text-center">{% render 'i18n-default', value: section.settings.heading, key: 'homepage.testimonials.heading', default: 'Homes that feel like Casa Mare' %}</h2>
+    {%- endif -%}
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+    </div>
+    <div class="grid grid--3" style="margin-top: 40px;">
+      {%- for block in section.blocks -%}
+        <figure {{ block.shopify_attributes }} style="text-align: center; padding: 28px;">
+          <blockquote style="font-family: var(--font-heading); font-style: italic; font-weight: 400; font-size: 1.25rem; line-height: 1.55; color: inherit;">
+            &ldquo;{{ block.settings.quote }}&rdquo;
+          </blockquote>
+          <figcaption class="t-muted" style="margin-top: 22px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.24em;">
+            — {{ block.settings.attribution }}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From our customers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Homes that feel like Casa Mare" },
+    { "type": "checkbox", "id": "dark", "label": "Dark (navy) background", "default": false },
+    { "type": "checkbox", "id": "sand", "label": "Sand background", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "attribution", "label": "Attribution", "default": "Happy customer" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "quote": "Every piece arrived feeling sun-warmed and beautifully made. Our living room finally feels like the beach house we dreamed of.", "attribution": "Elena M., Malibu" } },
+        { "type": "testimonial", "settings": { "quote": "The textures, the neutrals, the quiet craft. This is what coastal style should look like.", "attribution": "Thomas R., Newport" } },
+        { "type": "testimonial", "settings": { "quote": "It feels like walking into a home by the Mediterranean. Soft, warm, and thoughtfully made.", "attribution": "Carolina P., Santa Barbara" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

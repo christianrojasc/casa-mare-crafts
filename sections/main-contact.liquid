@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="page-width" style="max-width: 680px;">
+    <header style="text-align: center; margin-bottom: 40px;">
+      <div class="t-eyebrow">Get in touch</div>
+      <h1 class="t-h1" style="margin-top: 8px;">{{ page.title | default: 'Say hello' }}</h1>
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+      {%- if page.content != blank -%}
+        <div class="rte t-muted" style="margin-top: 22px;">{{ page.content }}</div>
+      {%- endif -%}
+    </header>
+
+    {%- form 'contact' -%}
+      {%- if form.posted_successfully? -%}
+        <p style="color: var(--color-sea-glass); text-align: center;">{{ 'contact.form.post_success' | t }}</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <div style="color: var(--color-clay); margin-bottom: 14px;">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+
+      <div class="stack-lg">
+        <div class="field"><label for="ContactName">{{ 'contact.form.name' | t }}</label><input type="text" id="ContactName" name="contact[name]" required></div>
+        <div class="field"><label for="ContactEmail">{{ 'contact.form.email' | t }}</label><input type="email" id="ContactEmail" name="contact[email]" required></div>
+        <div class="field"><label for="ContactMsg">{{ 'contact.form.body' | t }}</label><textarea id="ContactMsg" name="contact[body]" rows="5" required></textarea></div>
+        <button type="submit" class="btn btn--navy">{{ 'contact.form.send' | t }}</button>
+      </div>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Contact form" }
+{% endschema %}

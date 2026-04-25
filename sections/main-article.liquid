@@ -1,0 +1,22 @@
+<article class="section">
+  <div class="page-width" style="max-width: 760px;">
+    <header style="text-align: center; margin-bottom: 40px;">
+      <div class="t-eyebrow">{{ article.published_at | date: '%B %Y' }}</div>
+      <h1 class="t-h1" style="margin-top: 8px;">{{ article.title }}</h1>
+      {%- if article.author != blank -%}
+        <div class="t-muted" style="margin-top: 12px;">By {{ article.author }}</div>
+      {%- endif -%}
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 64 14" preserveAspectRatio="none"><path d="M0 7 C 10 0, 22 14, 32 7 S 54 0, 64 7"/></svg>
+      </div>
+    </header>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1800 }}" alt="{{ article.image.alt | escape }}" width="{{ article.image.width }}" height="{{ article.image.height }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 2px; margin-bottom: 40px;">
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article" }
+{% endschema %}

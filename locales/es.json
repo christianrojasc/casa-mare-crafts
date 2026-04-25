@@ -1,0 +1,152 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Ir al contenido",
+      "refresh_page": "Al elegir una opción, se actualiza la página completa.",
+      "open_menu": "Abrir menú",
+      "close_menu": "Cerrar menú",
+      "search": "Buscar",
+      "account": "Cuenta",
+      "cart": "Carrito",
+      "language": "Idioma",
+      "currency": "Moneda"
+    },
+    "search": {
+      "search": "Buscar",
+      "reset": "Borrar búsqueda",
+      "placeholder": "Buscar piezas y colecciones…",
+      "no_results": "Ningún resultado. Intenta con otra palabra.",
+      "results_for": "Resultados para “{{ terms }}”",
+      "prompt": "¿Qué estás buscando?"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página"
+    },
+    "cart": {
+      "view": "Ver carrito ({{ count }} artículos)",
+      "add": "Añadir al carrito",
+      "title": "Tu carrito",
+      "subtitle": "Tu selección",
+      "item": "Artículo",
+      "quantity": "Cantidad",
+      "total": "Total",
+      "remove": "Eliminar",
+      "update": "Actualizar carrito",
+      "summary": "Resumen",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "shipping_calculated": "Calculado al pagar",
+      "checkout": "Pagar",
+      "empty": "Tu carrito está vacío.",
+      "continue_shopping": "Seguir comprando",
+      "order_notes": "Notas del pedido"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Ir al contenido",
+    "refresh_page": "Al elegir una opción, se actualiza la página completa."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "sold_out": "Agotado",
+      "on_sale": "En oferta",
+      "about": "Sobre esta pieza",
+      "care": "Cuidado y artesanía",
+      "vendor": "Por {{ vendor }}"
+    },
+    "facets": {
+      "sort_by": "Ordenar por"
+    }
+  },
+  "collections": {
+    "general": {
+      "pieces": "{{ count }} piezas",
+      "empty": "Aún no hay piezas. Pronto llegan nuevas.",
+      "view_all": "Ver la colección completa",
+      "label": "Colección"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "Ver la colección completa"
+    }
+  },
+  "newsletter": {
+    "label": "Correo electrónico",
+    "placeholder": "tu@correo.com",
+    "button_label": "Suscribirse",
+    "success": "Gracias — revisa tu correo."
+  },
+  "contact": {
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "body": "Mensaje",
+      "send": "Enviar mensaje",
+      "post_success": "Gracias — te responderemos pronto."
+    }
+  },
+  "404": {
+    "eyebrow": "Fuera del mapa",
+    "title": "Esta página se ha ido a la deriva",
+    "body": "La página que buscabas no existe — pero aún hay mucha belleza costera hecha a mano por descubrir.",
+    "cta": "Volver al inicio"
+  },
+  "blog": {
+    "label": "Diario"
+  },
+  "password": {
+    "script": "Artesanía costera",
+    "title": "Abrimos pronto",
+    "body": "Piezas costeras hechas a mano para hogares cálidos y vividos frente al mar. Introduce la contraseña para ver la vista previa.",
+    "placeholder": "Contraseña",
+    "submit": "Entrar"
+  },
+  "homepage": {
+    "announcement": {
+      "message": "Piezas costeras hechas a mano — envío gratuito en pedidos superiores a $150",
+      "link_label": "Ver la colección"
+    },
+    "hero": {
+      "script": "Frente al mar",
+      "heading": "Piezas costeras hechas a mano para hogares cálidos y vividos frente al mar.",
+      "subheading": "Aporta textura, calidez y belleza natural a tu espacio con decoración costera artesanal inspirada en la vida junto al mar.",
+      "cta_primary": "Ver la colección",
+      "cta_secondary": "Explorar piezas hechas a mano"
+    },
+    "collection_list": {
+      "eyebrow": "Compra por colección",
+      "heading": "Pensado para la casa frente al mar",
+      "subheading": "Piezas costeras hechas a mano, organizadas por textura, ambiente y momento — cada una pensada para aportar calidez a tu hogar."
+    },
+    "featured": {
+      "eyebrow": "Novedades",
+      "heading": "Piezas artesanales desde el estudio",
+      "description": "Hechas a mano con textura natural y calidez costera — diseñadas para aportar un toque suave y orgánico a tu hogar.",
+      "cta": "Ver la colección completa"
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "script": "Vida lenta, frente al mar",
+      "heading": "Hechas para hogares que se sienten vividos",
+      "body": "<p>Casa Mare Crafts nació para hogares que se sienten relajados, cálidos y personales. Cada pieza está inspirada en la vida costera, los materiales naturales y la belleza serena de los detalles hechos a mano.</p><p>Nuestras piezas están pensadas para que tu hogar se sienta curado, iluminado por el sol y vivido — nunca demasiado pulido, nunca producido en masa.</p>",
+      "cta": "Conoce nuestra historia"
+    },
+    "testimonials": {
+      "eyebrow": "De nuestros clientes",
+      "heading": "Hogares que se sienten Casa Mare"
+    },
+    "newsletter_section": {
+      "eyebrow": "Mantente en contacto",
+      "heading": "Notas del estudio y novedades",
+      "body": "Acceso anticipado a nuevas piezas costeras, inspiración para estilizar y alguna que otra nota desde el estudio."
+    },
+    "footer": {
+      "brand_blurb": "Piezas costeras hechas a mano para hogares cálidos y vividos frente al mar. Texturas naturales, tonos suaves y detalles cuidados.",
+      "copyright_suffix": "Todos los derechos reservados."
+    }
+  }
+}

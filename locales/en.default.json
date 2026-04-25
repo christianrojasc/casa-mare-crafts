@@ -1,0 +1,152 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "refresh_page": "Choosing a selection results in a full page refresh.",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "search": "Search",
+      "account": "Account",
+      "cart": "Cart",
+      "language": "Language",
+      "currency": "Currency"
+    },
+    "search": {
+      "search": "Search",
+      "reset": "Clear search term",
+      "placeholder": "Search pieces and collections…",
+      "no_results": "Nothing matched your search. Try a broader word.",
+      "results_for": "Results for “{{ terms }}”",
+      "prompt": "What are you looking for?"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page"
+    },
+    "cart": {
+      "view": "View cart ({{ count }} items)",
+      "add": "Add to cart",
+      "title": "Your cart",
+      "subtitle": "Your selection",
+      "item": "Item",
+      "quantity": "Quantity",
+      "total": "Total",
+      "remove": "Remove",
+      "update": "Update cart",
+      "summary": "Summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "shipping_calculated": "Calculated at checkout",
+      "checkout": "Checkout",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping",
+      "order_notes": "Order notes"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "refresh_page": "Choosing a selection results in a full page refresh."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "on_sale": "On sale",
+      "about": "About this piece",
+      "care": "Care & craft",
+      "vendor": "By {{ vendor }}"
+    },
+    "facets": {
+      "sort_by": "Sort by"
+    }
+  },
+  "collections": {
+    "general": {
+      "pieces": "{{ count }} pieces",
+      "empty": "No pieces yet. New arrivals coming soon.",
+      "view_all": "View the full collection",
+      "label": "Collection"
+    }
+  },
+  "sections": {
+    "featured_collection": {
+      "view_all": "View the full collection"
+    }
+  },
+  "newsletter": {
+    "label": "Email",
+    "placeholder": "your@email.com",
+    "button_label": "Subscribe",
+    "success": "Thanks — keep an eye on your inbox."
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "body": "Message",
+      "send": "Send message",
+      "post_success": "Thank you — we’ll reply soon."
+    }
+  },
+  "404": {
+    "eyebrow": "Off the map",
+    "title": "This page drifted away",
+    "body": "The page you were looking for doesn’t exist — but there’s plenty of handmade coastal beauty still ahead.",
+    "cta": "Return home"
+  },
+  "blog": {
+    "label": "Journal"
+  },
+  "password": {
+    "script": "Handmade coastal goods",
+    "title": "Opening soon",
+    "body": "Handmade coastal pieces for warm, lived-in beach homes. Enter password to preview.",
+    "placeholder": "Password",
+    "submit": "Enter"
+  },
+  "homepage": {
+    "announcement": {
+      "message": "Handmade coastal pieces — complimentary shipping on orders over $150",
+      "link_label": "Shop the collection"
+    },
+    "hero": {
+      "script": "By the sea",
+      "heading": "Handmade coastal pieces for warm, lived-in beach homes.",
+      "subheading": "Bring texture, warmth, and natural beauty into your space with artisan coastal decor inspired by life by the sea.",
+      "cta_primary": "Shop the collection",
+      "cta_secondary": "Explore handmade pieces"
+    },
+    "collection_list": {
+      "eyebrow": "Shop by collection",
+      "heading": "Thoughtfully made for the beach home",
+      "subheading": "Handmade coastal pieces organized by mood, texture, and moment — each one made to bring warmth to your space."
+    },
+    "featured": {
+      "eyebrow": "New arrivals",
+      "heading": "Artisan-made pieces from the studio",
+      "description": "Handmade with natural texture and coastal warmth — designed to bring a soft, organic touch to your home.",
+      "cta": "View the full collection"
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "script": "Slow living, by the sea",
+      "heading": "Made for homes that feel lived-in",
+      "body": "<p>Casa Mare Crafts was created for homes that feel relaxed, warm, and personal. Each piece is inspired by coastal living, natural materials, and the quiet beauty of handmade details.</p><p>Our pieces are designed to make your home feel collected, sun-warmed, and lived-in — never overly polished, never mass-produced.</p>",
+      "cta": "Read our story"
+    },
+    "testimonials": {
+      "eyebrow": "From our customers",
+      "heading": "Homes that feel like Casa Mare"
+    },
+    "newsletter_section": {
+      "eyebrow": "Stay in touch",
+      "heading": "Studio notes & new arrivals",
+      "body": "Early access to new coastal pieces, styling inspiration, and the occasional note from the studio."
+    },
+    "footer": {
+      "brand_blurb": "Handmade coastal pieces for warm, lived-in beach homes. Natural textures, soft neutrals, and thoughtfully made details.",
+      "copyright_suffix": "All rights reserved."
+    }
+  }
+}
